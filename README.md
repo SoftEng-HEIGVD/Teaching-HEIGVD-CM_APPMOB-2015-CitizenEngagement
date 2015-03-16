@@ -823,6 +823,8 @@ angular.module('citizen-engagement.auth', ['angular-storage'])
 You can now update the `AuthService` in the same file to use persistent storage:
 
 ```js
+  .service('AuthService', function(store) {
+
     var service = {
       currentUserId: store.get('currentUserId'),
 
@@ -836,6 +838,9 @@ You can now update the `AuthService` in the same file to use persistent storage:
         store.remove('currentUserId');
       }
     };
+
+    return service;
+  })
 ```
 
 Your app should now remember user credentials even when you reload it!
